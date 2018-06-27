@@ -21,4 +21,4 @@ python write.py
 ### Special functionality
 - Press *u* to undo
 - Press *r* to redo
--Press *q* to quit
+- Press *q* to quit
