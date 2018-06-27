@@ -1,4 +1,5 @@
 import cv2
+import random
 import math
 import numpy as np
 from collections import deque
@@ -45,8 +46,10 @@ while (True):
             redo.clear()
         for i in range(1, len(center_points)):
         	# draw line only if the distance between those points is less than 70px
-            if math.sqrt((center_points[i-1][0] - center_points[i][0])**2 + (center_points[i-1][1] - center_points[i][1])**2) < 70:
-                cv2.line(frame, center_points[i-1], center_points[i], (255, 0, 0), 2, cv2.LINE_AA)
+            b = random.randint(200, 245)
+            g = random.randint(100, 200)
+            if math.sqrt((center_points[i-1][0] - center_points[i][0])**2 + (center_points[i-1][1] - center_points[i][1])**2) < 50:
+                cv2.line(frame, center_points[i-1], center_points[i], (b, g, 0), 4, cv2.LINE_AA)
         # showing the frames
         cv2.imshow('frame', frame)
         cv2.imshow('image', image)
