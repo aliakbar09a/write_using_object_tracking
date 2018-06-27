@@ -10,7 +10,7 @@ center_points = deque()
 # deque to store the redo command functionality
 redo = deque()
 # the range of colours to be detected
-lowergreen = np.array([50,100,100])
+lowergreen = np.array([50,100,50])
 uppergreen = np.array([90, 255, 255])
 while (True):
 	# reading the frame
@@ -37,6 +37,8 @@ while (True):
             moment = cv2.moments(largest_contour)
             # calculating the center point of the largest contour
             center = (int(moment['m10']/moment['m00']), int(moment['m01']/moment['m00']))
+            # circling the point 
+            cv2.circle(frame, center, 10, (255, 255, 0), 1, cv2.LINE_AA)
             # adding this center point to the center_points deque
             center_points.appendleft(center)
             # clearing the redo deque
@@ -44,7 +46,7 @@ while (True):
         for i in range(1, len(center_points)):
         	# draw line only if the distance between those points is less than 70px
             if math.sqrt((center_points[i-1][0] - center_points[i][0])**2 + (center_points[i-1][1] - center_points[i][1])**2) < 70:
-                cv2.line(frame, center_points[i-1], center_points[i], (255, 0, 0), 2)
+                cv2.line(frame, center_points[i-1], center_points[i], (255, 0, 0), 2, cv2.LINE_AA)
         # showing the frames
         cv2.imshow('frame', frame)
         cv2.imshow('image', image)
@@ -68,5 +70,6 @@ while (True):
                 center_points.appendleft(temp2)
             print('center', center_points)
             print('redo', redo)
+
 cap.release()	
 cv2.destroyAllWindows()
