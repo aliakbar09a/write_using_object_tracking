@@ -16,7 +16,7 @@ Run the file write.py from terminal
 ```
 python write.py
 ```
-<img src= "https://github.com/aliakbar09a/write_using_object_tracking/blob/master/sample_video.mp4">
+<img src= "https://github.com/aliakbar09a/write_using_object_tracking/blob/master/sample_video.gif">
 
 ### Special functionality
 - Press *u* to undo
